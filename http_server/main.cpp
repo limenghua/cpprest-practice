@@ -11,13 +11,10 @@ using namespace http::experimental::listener;
 
 int main()
 {
-    http_listener listener("http://127.0.0.1:3000");
+    http_listener listener("http://127.0.0.1:3001");
 
     listener.support([](http_request message){
-        auto response = json::value::object();
-        response["version"] = json::value::string("0.1.1");
-        response["status"] = json::value::string("ready!");
-        message.reply(status_codes::OK, response);
+        message.reply(status_codes::OK,"hello world");
     });
 
     listener.open().get();
